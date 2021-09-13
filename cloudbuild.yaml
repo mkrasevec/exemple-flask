@@ -1,7 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
+    id : A #on peut mettre n'importe quelle valeur de clé
     args: ['build', '-t', 'gcr.io/projet-group-a/flask-hello-mick1:latest','.']
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint : gcloud
+    waitFor: [A]
     args : ['run', 'deploy', 'test-flask-hello-ci-cd-mick', '--image', 'gcr.io/projet-group-a/flask-hello-mick1:latest', '--region', 'europe-west1', '--port', '80']
 images: [gcr.io/projet-group-a/flask-hello-mick1:latest]
