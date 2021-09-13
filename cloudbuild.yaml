@@ -1,4 +1,7 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/projet-group-a/flask-hello-mick1:latest','.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/projet-group-a/flask-hello-mick1:latest','.']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint : gcloud
+    args : ['run', 'deploy', 'test-flask-hello-ci-cd-mick', '--image', 'gcr.io/projet-group-a/flask-hello-mick1:latest', '--region', 'europe-west1', '--port', '80']
 images: [gcr.io/projet-group-a/flask-hello-mick1:latest]
