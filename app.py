@@ -19,7 +19,7 @@ app.logger.setLevel(logging.INFO)
 
 @app.route("/", methods=['POST','GET'])
 def hello():
-    return '<h1>Bonjour tout le monde</h1>'
+    return '<h1>Bonjour tout le monde, test cicd gcp déclencheur</h1>'
 
 
 if __name__ == "__main__":
